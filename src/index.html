@@ -10,11 +10,15 @@
 
   <script>
   import Vue from 'vue';
-  import Test from './test';
+  import Main from './main';
 
-  const app = new Vue(Test).$mount('#test');
+  const app = new Vue(Main).$mount('#test');
 
-  app.text = "Electron Forge with Vue.js!";
+  app.title = "NumericWallet - Interface Magasin";
+
+  app.donneesClient = {
+    defined: false
+  }
 
   </script>
 </html>
