@@ -36,17 +36,23 @@ export default {
     },
     checkoutData: function() {
       this.donneesClient = {
-        defined: true,
-        prenom: "Léo",
-        nom: "Rolland",
-        id: "172fa323e",
-        email: "rolland.leo@orange.fr",
-        magasin: {
-          id: 67832576,
-          nom: "Leroy-Merlin",
-          since: "2 juillet 2017",
-          points: 130
-        }
+          "clientId": 123,
+          "prenom": "LéoMOCKED",
+          "nom": "RollandMOCKED",
+          "magasins": {
+              "10232": {
+                  "points": 0,
+                  "achats": 2,
+                  "date": "12/12/2018",
+                  "nom": "AlineaMOCKED"
+              },
+              "10233": {
+                  "points": 0,
+                  "achats": 0,
+                  "date": "12/12/2018",
+                  "nom": "Mr.BricolageMOCKED"
+              }
+          }
       };
     }
   }

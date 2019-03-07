@@ -12,11 +12,13 @@
       </tr>
       <tr>
         <td>E-mail</td>
-        <td>{{ donneesClient.email }}</td>
+        <td>{{ donneesClient.email ? donneesClient.email : "(aucun mail défini)" }}</td>
       </tr>
     </table>
     <h2>Magasin</h2>
-    <magasin v-bind:magasin="donneesClient.magasin"></magasin>
+    <div v-for="magasin in donneesClient.magasins">
+      <magasin v-bind:magasin="magasin"></magasin>
+    </div>
   </div>
 </template>
 

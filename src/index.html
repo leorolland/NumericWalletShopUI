@@ -14,11 +14,40 @@
     }
   </style>
 
-  <script>
+<script>
+  const Lecteur = require('./lecteur.js')
+  const Http = new XMLHttpRequest();
+  
   import Vue from 'vue';
   import Main from './main';
 
+  // Initialisation du framework Vue
   const app = new Vue(Main).$mount('#test');
+  // Initialisation du lecteur USB
+  const lecteur = new Lecteur("COMtest")
+  // Fake reception every 2s
+  lecteur.mockReception()
+
+  // Lorsqu'une carte est lue
+  lecteur.on('cardRead', (x)=>{
+    // On envoie une requete de récupération des données sur l'API
+    const url='http://localhost:3000/getClient/' + x;
+    Http.open("GET", url);
+    Http.send();
+    // Quand la réponse de l'API est reçue
+    Http.onreadystatechange=(e)=>{
+      const res = Http.responseText
+      // Si la réponse est présente
+      if (res.length > 0) {
+        // On crée un objet réponse
+        const resObj = JSON.parse(res)
+        resObj.defined = true
+        console.log("Réponse de l'API reçue pour client : " + x)
+        console.log(resObj)
+        app.donneesClient = resObj
+      }
+    }
+  })
 
   app.title = "NumericWallet - Interface Magasin";
 

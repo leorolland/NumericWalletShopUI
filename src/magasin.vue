@@ -1,7 +1,7 @@
 <template>
   <div v-if="magasin">
     <h2>{{magasin.nom}}</h2>
-    <p>Client depuis : {{magasin.since}}</p>
+    <p>Client depuis : {{magasin.date}}</p>
     <h2>{{magasin.points}} points</h2>
   </div>
 </template>

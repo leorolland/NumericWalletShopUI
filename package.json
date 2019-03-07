@@ -50,7 +50,8 @@
     "electron-compile": "^6.4.4",
     "electron-devtools-installer": "^2.2.4",
     "electron-squirrel-startup": "^1.0.0",
-    "vue": "^2.6.4",
+    "serialport": "^6",
+    "vue": "^2.6.7",
     "vueify": "^9.4.1"
   },
   "devDependencies": {
@@ -58,6 +59,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "electron-forge": "^5.2.4",
-    "electron-prebuilt-compile": "4.0.0"
+    "electron-prebuilt-compile": "4.0.0",
+    "electron-rebuild": "^1.8.4"
   }
 }
