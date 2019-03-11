@@ -1,6 +1,6 @@
 <template>
-  <div v-if="donneesClient.defined">
-    <h2>Données sur le client</h2>
+  <div v-if="donneesClient.defined" class="container">
+    <h3>Données sur le client</h3>
     <table>
       <tr>
         <td>Prénom</td>
@@ -15,9 +15,18 @@
         <td>{{ donneesClient.email ? donneesClient.email : "(aucun mail défini)" }}</td>
       </tr>
     </table>
-    <h2>Magasin</h2>
-    <div v-for="magasin in donneesClient.magasins">
-      <magasin v-bind:magasin="magasin"></magasin>
+    <div v-if="appParameters.type == 'magasin' ">
+      <p>(Vous n'avez pas accès à certaines données du client)</p>
+    </div>
+    <h3>Magasin(s)</h3>
+    <div v-for="magasin in Object.entries(donneesClient.magasins)">
+      <magasin 
+        v-if="appParameters.type != 'magasin' || magasin[0] == appParameters.id" 
+        v-bind:magasin="magasin[1]"
+        ></magasin>
+    </div>
+    <div v-if="appParameters.type == 'magasin' ">
+      <p>(Vous n'avez pas accès aux autres magasins)</p>
     </div>
   </div>
 </template>
@@ -26,7 +35,7 @@
 import Magasin from "./magasin";
 export default {
   name: "infosclient",
-  props: ["donneesClient"],
+  props: ["donneesClient", "appParameters"],
   components: {
     Magasin
   }
@@ -35,6 +44,7 @@ export default {
 
 <style lang="scss" scoped>
 table {
+  max-width: 300px;
   border-collapse: collapse;
 }
 table,

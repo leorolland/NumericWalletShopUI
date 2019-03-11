@@ -13,10 +13,9 @@ class Lecture extends EventEmitter {
     }
 
     mockReception() {
-        this.emit('cardRead', "123")
-        setInterval(() => {
+        setTimeout(() => {
             this.emit('cardRead', "123")
-        }, 10000);
+        }, 2000);
     }
 
     enableListener() {

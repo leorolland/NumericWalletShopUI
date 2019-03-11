@@ -1,27 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../node_modules/v-toaster/dist/v-toaster.css">
-    <title></title>
-  </head>
-  <body>
-    <div id="test"></div>
-  </body>
 
-  <style>
-    body {
-      font-family: sans-serif;
-    }
-  </style>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../node_modules/v-toaster/dist/v-toaster.css">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <title></title>
+</head>
+
+<body>
+  <div id="test"></div>
+</body>
+
+<style>
+  body {
+    font-family: sans-serif;
+  }
+  .container {
+    background-color: white;
+    max-width: 1200px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  .field {
+    width: 130px!important;
+  }
+  h1 {
+    text-align: center;
+
+  }
+</style>
 
 <script>
   const Lecteur = require('./lecteur.js')
   const Http = new XMLHttpRequest();
-  
+
   import Vue from 'vue';
   import Toaster from 'v-toaster'
-  Vue.use(Toaster, {timeout: 2000})
+  Vue.use(Toaster, { timeout: 2000 })
   import Main from './main';
 
   // Initialisation du framework Vue
@@ -32,14 +52,14 @@
   lecteur.mockReception()
 
   // Lorsqu'une carte est lue
-  lecteur.on('cardRead', (x)=>{
+  lecteur.on('cardRead', (x) => {
     app.cardRead()
     // On envoie une requete de récupération des données sur l'API
-    const url='http://noxunote.fr:3000/getClient/' + x;
+    const url = 'http://noxunote.fr:3000/getClient/' + x;
     Http.open("GET", url);
     Http.send();
     // Quand la réponse de l'API est reçue
-    Http.onreadystatechange=(e)=>{
+    Http.onreadystatechange = (e) => {
       if (Http.readyState === 4 && Http.status === 200) {
         const res = Http.responseText
         // Si la réponse est présente
@@ -56,11 +76,10 @@
     }
   })
 
-  app.title = "NumericWallet - Interface Magasin";
-
   app.donneesClient = {
     defined: false
   }
 
-  </script>
+</script>
+
 </html>

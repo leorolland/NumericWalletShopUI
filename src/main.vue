@@ -1,13 +1,17 @@
 <template>
   <div>
-    <h1>{{title}}</h1>
-    <hr>
-    <button v-on:click="checkoutData">CheckoutData</button>
-    <button v-on:click="clearData">ClearData</button>
-    <hr>
-    <infosclient v-bind:donneesClient="donneesClient"></infosclient>
-    <hr>
-    <actionsclient v-bind:donneesClient="donneesClient"></actionsclient>
+    <h4 style="text-align: center; color: grey">Interface Magasin</h4>
+    <h1>NumericWallet</h1>
+    <div class="container">
+      <p>Bienvenue dans l'interface magasin de Numeric Wallet, scannez une carte client pour 
+        obtenir des informations sur son compte client et modifier son nombre de points.
+      </p>
+      Votre id Magasin est : 
+      <input type="text" v-model="appParameters.id" class="field">
+      <button v-on:click="clearData">ClearData</button>
+    </div>
+    <infosclient v-bind:donneesClient="donneesClient" v-bind:appParameters="appParameters"></infosclient>
+    <actionsclient v-bind:donneesClient="donneesClient" v-bind:appParameters="appParameters"></actionsclient>
   </div>
 </template>
 
@@ -20,7 +24,11 @@ export default {
   data() {
     return {
       title: "",
-      donneesClient: { defined: false}
+      donneesClient: { defined: false},
+      appParameters: {
+        type: "magasin",
+        id: 10232
+      }
     };
   },
   components: {
@@ -61,7 +69,15 @@ export default {
               }
           }
       };
+    },
+    updateIdMag: function () {
+      
     }
   }
 };
 </script>
+<style>
+  html {
+    background-color: rgb(199, 225, 255)
+  }
+</style>

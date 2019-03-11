@@ -1,5 +1,5 @@
 <template>
-  <div v-if="donneesClient.defined">
+  <div class="container" v-if="donneesClient.defined">
     <form action="">
       <input type="number">
     </form>

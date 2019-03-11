@@ -1,8 +1,8 @@
 <template>
   <div v-if="magasin">
-    <h2>{{magasin.nom}}</h2>
+    <h4>{{magasin.nom}}</h4>
     <p>Client depuis : {{magasin.date}}</p>
-    <h2>{{magasin.points}} points</h2>
+    <h4>{{magasin.points}} points</h4>
   </div>
 </template>
 
