@@ -18,7 +18,7 @@
     <div v-if="appParameters.type == 'magasin' ">
       <p>(Vous n'avez pas accès à certaines données du client)</p>
     </div>
-    <h3>Magasin(s)</h3>
+    <h3>Magasins</h3>
     <div v-for="magasin in Object.entries(donneesClient.magasins)">
       <magasin 
         v-if="appParameters.type != 'magasin' || magasin[0] == appParameters.id" 
