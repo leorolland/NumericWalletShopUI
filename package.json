@@ -51,7 +51,9 @@
     "electron-devtools-installer": "^2.2.4",
     "electron-squirrel-startup": "^1.0.0",
     "serialport": "^6",
+    "v-toaster": "^1.0.3",
     "vue": "^2.6.7",
+    "vue2-toast": "^2.0.2",
     "vueify": "^9.4.1"
   },
   "devDependencies": {

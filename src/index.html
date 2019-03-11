@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="../node_modules/v-toaster/dist/v-toaster.css">
     <title></title>
   </head>
   <body>
@@ -19,6 +20,8 @@
   const Http = new XMLHttpRequest();
   
   import Vue from 'vue';
+  import Toaster from 'v-toaster'
+  Vue.use(Toaster, {timeout: 2000})
   import Main from './main';
 
   // Initialisation du framework Vue
@@ -30,21 +33,25 @@
 
   // Lorsqu'une carte est lue
   lecteur.on('cardRead', (x)=>{
+    app.cardRead()
     // On envoie une requete de récupération des données sur l'API
-    const url='http://localhost:3000/getClient/' + x;
+    const url='http://noxunote.fr:3000/getClient/' + x;
     Http.open("GET", url);
     Http.send();
     // Quand la réponse de l'API est reçue
     Http.onreadystatechange=(e)=>{
-      const res = Http.responseText
-      // Si la réponse est présente
-      if (res.length > 0) {
-        // On crée un objet réponse
-        const resObj = JSON.parse(res)
-        resObj.defined = true
-        console.log("Réponse de l'API reçue pour client : " + x)
-        console.log(resObj)
-        app.donneesClient = resObj
+      if (Http.readyState === 4 && Http.status === 200) {
+        const res = Http.responseText
+        // Si la réponse est présente
+        if (res.length > 0) {
+          // On crée un objet réponse
+          const resObj = JSON.parse(res)
+          resObj.defined = true
+          console.log("Réponse de l'API reçue pour client : " + x)
+          console.log(resObj)
+          app.receivedData()
+          app.donneesClient = resObj
+        }
       }
     }
   })

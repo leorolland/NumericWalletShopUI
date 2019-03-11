@@ -29,10 +29,17 @@ export default {
   },
   methods: {
     clearData: function() {
+      this.$toaster.info('Données réinitialisées.')
       this.donneesClient = {
         title: "",
         donneesClient: { defined: false}
       }
+    },
+    cardRead() {
+      this.$toaster.success('Récupération des données en ligne...')
+    },
+    receivedData() {
+      this.$toaster.success('Données reçues.')
     },
     checkoutData: function() {
       this.donneesClient = {
