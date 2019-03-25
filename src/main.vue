@@ -11,12 +11,14 @@
       <button v-on:click="clearData">ClearData</button>
     </div>
     <infosclient v-bind:donneesClient="donneesClient" v-bind:appParameters="appParameters"></infosclient>
-    <actionsclient v-bind:donneesClient="donneesClient" v-bind:appParameters="appParameters"></actionsclient>
+    <!-- <actionsclient v-bind:donneesClient="donneesClient" v-bind:appParameters="appParameters"></actionsclient> -->
     <div class="container" v-if="!donneesClient.defined">
       <img src="./images/cardRead.png" id="cardRead" alt="Lecture de la carte">
       <span class="cardReadDesc">
-        Passez une carte sur le lecteur !<br>
-        <button v-on:click="mockReadCard">Simuler lecture</button>
+        S'identifier en tant que <br>
+        <button v-on:click="readCard('2485148486649535051536853300')">Léo Rolland</button>
+        <button v-on:click="readCard('2485148486649535054495649300')">Eloy Martinez</button>
+        <button v-on:click="readCard('123456')">Alexis Gaillard</button>
       </span>
     </div>
 
@@ -35,7 +37,7 @@ export default {
       title: "",
       donneesClient: { defined: false},
       appParameters: {
-        type: "magasin",
+        type: "client",
         id: 10232,
         host: "noxunote.fr"
       }

@@ -36,8 +36,6 @@
 </style>
 
 <script>
-  const Lecteur = require('./lecteur.js')
-
   import Vue from 'vue';
   import Toaster from 'v-toaster'
   Vue.use(Toaster, { timeout: 2000 })
@@ -45,15 +43,6 @@
 
   // Initialisation du framework Vue
   const app = new Vue(Main).$mount('#test');
-  // Initialisation du lecteur USB
-  const lecteur = new Lecteur("COMtest")
-  // Fake reception every 2s
-  // lecteur.mockReception()
-
-  // Lorsqu'une carte est lue
-  lecteur.on('cardRead', (x) => {
-    app.readCard(x)
-  })
 
   app.donneesClient = {
     defined: false
