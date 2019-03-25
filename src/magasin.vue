@@ -15,10 +15,11 @@ export default {
 
 <style lang="scss" scoped>
     div {
-        background-color: greenyellow;
-        border-radius: 10px;
-        padding: 10px;
-        max-width: 300px;
-        text-align: center;
+      background-color: greenyellow;
+      border-radius: 10px;
+      padding: 10px;
+      max-width: 300px;
+      text-align: center;
+      margin-bottom: 20px;
     }
 </style>
