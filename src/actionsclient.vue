@@ -35,17 +35,18 @@ export default {
   methods: {
     addPoints: function(magasinId, points) {
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", "http://noxunote.fr:3000/ajoutePoints");
+      xhr.open("POST", "http://"+this.appParameters.host+":3000/ajoutePoints");
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.send(JSON.stringify({
         "idc": this.donneesClient.clientId,
         "idm": magasinId,
-        "points:": points
+        "points": points
       }));
       // Quand la réponse de l'API est reçue
       xhr.onreadystatechange = e => {
         if (xhr.readyState === 4 && xhr.status === 200) {
           this.$toaster.success(points + ' points ont été ajoutés à ce compte.')
+          this.$parent.refreshData()
         }
       };
     }

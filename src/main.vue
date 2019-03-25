@@ -36,7 +36,8 @@ export default {
       donneesClient: { defined: false},
       appParameters: {
         type: "magasin",
-        id: 10232
+        id: 10232,
+        host: "noxunote.fr"
       }
     };
   },
@@ -56,10 +57,13 @@ export default {
       this.$toaster.info('Simulation d\'une lecture de carte ...')
       this.readCard(123)
     },
+    refreshData() {
+      this.readCard(this.donneesClient.clientId)
+    },
     readCard(x) {
       this.$toaster.success('Récupération des données en ligne...')
       // On envoie une requete de récupération des données sur l'API
-      const url = 'http://noxunote.fr:3000/getClient/' + x;
+      const url = 'http://'+this.appParameters.host+':3000/getClient/' + x;
       Http.open("GET", url);
       Http.send();
       // Quand la réponse de l'API est reçue
