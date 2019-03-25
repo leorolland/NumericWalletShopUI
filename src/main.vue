@@ -1,13 +1,10 @@
 <template>
   <div>
-    <h4 style="text-align: center; color: grey">Interface Magasin</h4>
+    <h4 style="text-align: center; color: grey">Interface Client</h4>
     <h1>NumericWallet</h1>
     <div class="container" v-if="donneesClient.defined">
-      <p>Bienvenue dans l'interface magasin de Numeric Wallet, scannez une carte client pour 
-        obtenir des informations sur son compte client et modifier son nombre de points.
+      <p>Bienvenue dans l'interface client de Numeric Wallet, ici vous pouvez consulter l'ensemble de vos données sécurisées.
       </p>
-      Votre id Magasin est : 
-      <input type="text" v-model="appParameters.id" class="field">
       <button v-on:click="clearData">ClearData</button>
     </div>
     <infosclient v-bind:donneesClient="donneesClient" v-bind:appParameters="appParameters"></infosclient>
