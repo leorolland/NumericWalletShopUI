@@ -48,7 +48,7 @@
   // Initialisation du lecteur USB
   const lecteur = new Lecteur("COMtest")
   // Fake reception every 2s
-  lecteur.mockReception()
+  // lecteur.mockReception()
 
   // Lorsqu'une carte est lue
   lecteur.on('cardRead', (x) => {

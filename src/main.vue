@@ -55,10 +55,11 @@ export default {
     },
     mockReadCard: function() {
       this.$toaster.info('Simulation d\'une lecture de carte ...')
-      this.readCard(123)
+      // Lecture Léo ROLLAND
+      this.readCard("2485148486649535051536853300")
     },
     refreshData() {
-      this.readCard(this.donneesClient.clientId)
+      if (this.donneesClient.defined) this.readCard(this.donneesClient.clientId)
     },
     readCard(x) {
       this.$toaster.success('Récupération des données en ligne...')
