@@ -24,7 +24,8 @@
     background-color: white;
     max-width: 1200px;
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 40px;
+    box-shadow: 3px 4px 15px #0000002b;
   }
   .field {
     width: 130px!important;
@@ -46,13 +47,15 @@
   // Initialisation du framework Vue
   const app = new Vue(Main).$mount('#test');
   // Initialisation du lecteur USB
-  const lecteur = new Lecteur("COMtest")
+  const lecteur = new Lecteur("/dev/tty.usbmodem14101")
   // Fake reception every 2s
   // lecteur.mockReception()
 
   // Lorsqu'une carte est lue
   lecteur.on('cardRead', (x) => {
     app.readCard(x)
+    var audio = new Audio('beep-07.mp3');
+    audio.play();
   })
 
   app.donneesClient = {

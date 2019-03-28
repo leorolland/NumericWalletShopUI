@@ -1,7 +1,7 @@
 <template>
   <div>
     <h4 style="text-align: center; color: grey">Interface Magasin</h4>
-    <h1>NumericWallet</h1>
+    <img id="logo" src="images/logo.png" alt="">
     <div class="container" v-if="donneesClient.defined">
       <p>Bienvenue dans l'interface magasin de Numeric Wallet, scannez une carte client pour 
         obtenir des informations sur son compte client et modifier son nombre de points.
@@ -89,8 +89,15 @@ export default {
 </script>
 
 <style lang="sass">
+
+#logo {
+    width: 284.4px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
   html {
-    background-color: rgb(199, 225, 255)
+    background-color: #e0e0e0;
   }
   #cardRead {
     display: block;
