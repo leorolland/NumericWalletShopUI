@@ -20,5 +20,6 @@ export default {
         padding: 10px;
         max-width: 300px;
         text-align: center;
+        margin-bottom: 20px;
     }
 </style>

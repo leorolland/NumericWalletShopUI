@@ -1,7 +1,7 @@
 <template>
   <div>
     <h4 style="text-align: center; color: grey">Interface Client</h4>
-    <h1>NumericWallet</h1>
+    <img id="logo" src="images/logo.png" alt="">
     <div class="container" v-if="donneesClient.defined">
       <p>Bienvenue dans l'interface client de Numeric Wallet, ici vous pouvez consulter l'ensemble de vos données sécurisées.
       </p>
@@ -18,7 +18,6 @@
         <button v-on:click="readCard('123456')">Alexis Gaillard</button>
       </span>
     </div>
-
   </div>
 </template>
 
@@ -88,8 +87,14 @@ export default {
 </script>
 
 <style lang="sass">
+#logo {
+    width: 284.4px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
   html {
-    background-color: rgb(199, 225, 255)
+    background-color: #e0e0e0;
   }
   #cardRead {
     display: block;

@@ -58,5 +58,17 @@ export default {
 li {
   line-height: 2em;
   text-emphasis: none;
+  margin-top: 20px;
+}
+.btn, .btn-large, .btn-small {
+    text-decoration: none;
+    color: #000;
+    width: 200px;
+    background-color: greenyellow;
+    text-align: center;
+    letter-spacing: .5px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
 }
 </style>
