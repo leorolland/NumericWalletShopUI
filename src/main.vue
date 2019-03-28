@@ -24,6 +24,7 @@
 <script>
 import Infosclient from "./infosclient";
 import Actionsclient from "./actionsclient";
+import { setInterval, setTimeout } from 'timers';
 const Http = new XMLHttpRequest();
 
 export default {
@@ -36,7 +37,8 @@ export default {
         type: "client",
         id: 10232,
         host: "noxunote.fr"
-      }
+      },
+      refresher: null
     };
   },
   components: {
@@ -50,22 +52,25 @@ export default {
         title: "",
         donneesClient: { defined: false }
       }
+      clearTimeout(this.refresher)
     },
     mockReadCard: function() {
       this.$toaster.info('Simulation d\'une lecture de carte ...')
       // Lecture Léo ROLLAND
       this.readCard("2485148486649535051536853300")
     },
-    refreshData() {
-      if (this.donneesClient.defined) this.readCard(this.donneesClient.clientId)
+    refreshData(silent) {
+      if (this.donneesClient.defined) this.readCard(this.donneesClient.clientId, silent?silent:false)
     },
-    readCard(x) {
-      this.$toaster.success('Récupération des données en ligne...')
+    readCard: function(x, silent) {
+      var v = this
+      if (!silent) this.$toaster.success('Récupération des données en ligne...')
       // On envoie une requete de récupération des données sur l'API
       const url = 'http://'+this.appParameters.host+':3000/getClient/' + x;
       Http.open("GET", url);
       Http.send();
       // Quand la réponse de l'API est reçue
+      const that = this
       Http.onreadystatechange = (e) => {
         if (Http.readyState === 4 && Http.status === 200) {
           const res = Http.responseText
@@ -76,12 +81,15 @@ export default {
             resObj.defined = true
             console.log("Réponse de l'API reçue pour client : " + x)
             console.log(resObj)
-            this.$toaster.success('Données reçues.')
+            if (!silent) this.$toaster.success('Données reçues.')
             this.donneesClient = resObj
+            window.setTimeout(() => {
+              this.refreshData(true)
+            }, 2000)
           }
         }
       }
-    },
+    }
   }
 };
 </script>
