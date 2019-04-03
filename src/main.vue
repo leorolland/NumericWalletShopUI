@@ -36,7 +36,7 @@ export default {
       appParameters: {
         type: "client",
         id: 10232,
-        host: "noxunote.fr"
+        host: "localhost"
       },
       refresher: null
     };
