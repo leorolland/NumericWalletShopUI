@@ -37,7 +37,7 @@ export default {
       appParameters: {
         type: "magasin",
         id: 10232,
-        host: "noxunote.fr"
+        host: "localhost"
       }
     };
   },
